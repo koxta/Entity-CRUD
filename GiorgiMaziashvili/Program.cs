@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
+
 
 namespace GiorgiMaziashvili
 {
@@ -76,7 +74,7 @@ namespace GiorgiMaziashvili
             Console.WriteLine("Enter Manufacturer id (Press enter to skip)");
             string manufacturerID = Console.ReadLine();
 
-            if(!string.IsNullOrEmpty(manufacturerID))
+            if (!string.IsNullOrEmpty(manufacturerID))
             {
                 int mId = Convert.ToInt32(manufacturerID);
                 // modify manufacturer
@@ -88,7 +86,7 @@ namespace GiorgiMaziashvili
             Console.WriteLine("Enter phone model (Press enter to skip)");
             string model = Console.ReadLine();
 
-            if(!string.IsNullOrEmpty(model))
+            if (!string.IsNullOrEmpty(model))
             {
                 // modify model name
                 phone.PhoneModel = model;
@@ -111,7 +109,7 @@ namespace GiorgiMaziashvili
             }
             string osId = Console.ReadLine();
 
-            if(!string.IsNullOrEmpty(osId))
+            if (!string.IsNullOrEmpty(osId))
             {
                 int oid = Convert.ToInt32(osId);
                 // modify os
@@ -122,7 +120,6 @@ namespace GiorgiMaziashvili
             }
 
             context.SaveChanges();
-
         }
 
         private static void Delete(PhoneContext context)
@@ -175,14 +172,10 @@ namespace GiorgiMaziashvili
             var p = new Models.Phone
             {
                 Manufacturer = manufacturer,
-
                 PhoneModel = phoneModel,
-
                 Date = date,
-
                 OperatingSystems = operatingSystems
             };
-
             context.Phones.Add(p);
             context.SaveChanges();
         }
@@ -192,7 +185,6 @@ namespace GiorgiMaziashvili
             Console.Clear();
             Console.WriteLine("Reading from database ...");
             var phones = (from p in context.Phones select p).ToList();
-
 
             if (phones.Count > 0)
             {
@@ -211,7 +203,6 @@ namespace GiorgiMaziashvili
             }
         }
     }
-
 }
 
 
